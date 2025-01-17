@@ -1,0 +1,116 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #1e1e1e;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Clock Container */
+#time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 600px;
+}
+
+/* Circle Wrapper */
+.circle {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dots */
+.dots {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--color);
+    border-radius: 50%;
+    z-index: 2;
+    transform-origin: center;
+}
+
+/* Hour, Minute, Second Dots */
+.h_dot {
+    top: -5px;
+}
+.m_dot {
+    top: -5px;
+}
+.s_dot {
+    top: -5px;
+}
+
+/* SVG Circle Animations */
+svg {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    transform: rotate(-90deg);
+}
+
+svg circle {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 10;
+    r: 70;
+    cx: 70;
+    cy: 70;
+}
+
+svg circle:nth-child(2) {
+    stroke: var(--color);
+    stroke-dasharray: 440; /* 2 * PI * radius (2 * 3.14 * 70) */
+    stroke-dashoffset: 440;
+    transition: stroke-dashoffset 0.3s linear;
+}
+
+/* Text Styling */
+#hours, #minutes, #seconds {
+    text-align: center;
+    position: absolute;
+    z-index: 3;
+}
+
+#hours p, #minutes p, #seconds p {
+    margin: 5px 0;
+}
+
+#hours p:first-child,
+#minutes p:first-child,
+#seconds p:first-child {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.time-text {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* AM/PM Styling */
+.ap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
